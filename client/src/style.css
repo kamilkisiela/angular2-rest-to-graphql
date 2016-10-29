@@ -1,0 +1,30 @@
+body {
+  font-family: sans-serif;
+}
+
+director {
+  display: flex;
+  background-color: #eee;
+  margin: 12px;
+  padding: 8px;
+}
+
+director img {
+  width: 200px;
+  height: 200px;
+}
+
+director movies-list {
+  display: flex;
+}
+
+director movies-list movie {
+  margin: 12px;
+  padding: 0 10px;
+  background-color: #f9f9f9;
+}
+
+director movies-list movie img {
+  width: 200px;
+  height: 200px;
+}
