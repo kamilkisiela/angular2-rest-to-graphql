@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-
-import { Data } from '../shared/data.service';
+import { Angular2Apollo } from 'angular2-apollo';
 
 const directorsQuery = `
   query getDirectors {
@@ -24,10 +23,8 @@ export class DirectorsListContainerComponent implements OnInit {
   directors: Observable<any[]>;
 
   constructor(
-    private data: Data
+    private apollo: Angular2Apollo
   ) {}
 
-  ngOnInit() {
-    this.directors = this.data.getDirectors();
-  }
+  ngOnInit() {}
 }
