@@ -1,23 +1,38 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Angular2Apollo, ApolloQueryObservable } from 'angular2-apollo';
+import { ApolloQueryResult } from 'apollo-client';
 
-import { Data } from '../shared/data.service';
+import gql from 'graphql-tag';
+
+const moviesQuery = gql`
+  query getMovies ($id: Int!) {
+    moviesByDirector(id: $id) {
+      title
+      releasedIn
+    }
+  }
+`;
 
 @Component({
   selector: 'movies-list-container',
   template: `
-    <movies-list [movies]="movies | async"></movies-list>
+    <movies-list [movies]="movies | async | select: 'moviesByDirector'"></movies-list>
   `
 })
 export class MoviesListContainerComponent implements OnInit {
   @Input() director: any;
-  movies: Observable<any[]>;
+  movies: ApolloQueryObservable<ApolloQueryResult>;
 
   constructor(
-    private data: Data
+    private apollo: Angular2Apollo
   ) {}
 
   ngOnInit() {
-    this.movies = this.data.getMoviesByDirector(this.director.id);
+    this.movies = this.apollo.watchQuery({
+      query: moviesQuery,
+      variables: {
+        id: this.director.id
+      }
+    });
   }
 }
