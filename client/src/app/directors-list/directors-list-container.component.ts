@@ -19,7 +19,7 @@ const directorsQuery = gql`
 @Component({
   selector: 'directors-list-container',
   template: `
-    <directors-list [directors]="directors | async"></directors-list>
+    <directors-list [directors]="directors | async | select: 'directors'"></directors-list>
   `
 })
 export class DirectorsListContainerComponent implements OnInit {
