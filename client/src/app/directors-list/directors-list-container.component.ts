@@ -3,6 +3,17 @@ import { Observable } from 'rxjs/Observable';
 
 import { Data } from '../shared/data.service';
 
+const directorsQuery = `
+  query getDirectors {
+    directors {
+      id
+      firstName
+      lastName
+      image
+    }
+  }
+`;
+
 @Component({
   selector: 'directors-list-container',
   template: `
