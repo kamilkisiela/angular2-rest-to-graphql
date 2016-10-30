@@ -1,3 +1,5 @@
+import { makeExecutableSchema } from 'graphql-tools';
+
 const rootSchema = [`
   
   type Director {
@@ -26,3 +28,10 @@ const rootResolvers = {
     }
   }
 }
+
+const schema = makeExecutableSchema({
+  typeDefs: rootSchema,
+  resolvers: rootResolvers
+});
+
+export default schema;
