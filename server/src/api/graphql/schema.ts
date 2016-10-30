@@ -5,8 +5,8 @@ const rootSchema = [`
     firstName: String!
     lastName: String!
     birthday: Float!
-    bio: string
-    image: string!
+    bio: String
+    image: String!
   }
 
   type Query {
@@ -18,3 +18,11 @@ const rootSchema = [`
   }
 
 `];
+
+const rootResolvers = {
+  Query: {
+    directors() {
+      return [];
+    }
+  }
+}
