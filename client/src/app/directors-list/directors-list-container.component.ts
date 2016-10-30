@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Angular2Apollo } from 'angular2-apollo';
+import { Angular2Apollo, ApolloQueryObservable } from 'angular2-apollo';
 
 const directorsQuery = `
   query getDirectors {
@@ -20,11 +19,15 @@ const directorsQuery = `
   `
 })
 export class DirectorsListContainerComponent implements OnInit {
-  directors: Observable<any[]>;
+  directors: ApolloQueryObservable<any>;
 
   constructor(
     private apollo: Angular2Apollo
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.directors = this.apollo.watchQuery({
+      query: directorsQuery
+    });
+  }
 }
