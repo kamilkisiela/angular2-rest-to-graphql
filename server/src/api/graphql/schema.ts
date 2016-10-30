@@ -40,6 +40,13 @@ const rootResolvers = {
     movies(root, args, context) {
       return context.db.getMovies();
     }
+  },
+
+
+  Movie: {
+    director(root, args, context) {
+      return context.db.getDirector(root.director);
+    }
   }
 }
 
