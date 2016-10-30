@@ -24,6 +24,7 @@ const rootSchema = [`
   type Query {
     directors: [Director]
     movies: [Movie]
+    moviesByDirector(id: Int!): [Movie]
   }
 
   schema {
@@ -40,6 +41,10 @@ const rootResolvers = {
 
     movies(root, args, context) {
       return context.db.getMovies();
+    },
+
+    moviesByDirector(root, args, context) {
+      return context.db.getMoviesByDirector(args.id);
     }
   },
 
