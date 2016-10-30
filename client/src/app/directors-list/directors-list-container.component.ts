@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Angular2Apollo, ApolloQueryObservable } from 'angular2-apollo';
 
-const directorsQuery = `
+import gql from 'graphql-tag';
+
+const directorsQuery = gql`
   query getDirectors {
     directors {
       id
