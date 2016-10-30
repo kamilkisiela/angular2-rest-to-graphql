@@ -1,7 +1,8 @@
-import { ApolloClient, createNetworkInterface } from 'apollo-client';
+import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client';
 
-const networkInterface = createNetworkInterface({
-  uri: 'http://localhost:4000/graphql'
+const networkInterface = createBatchingNetworkInterface({
+  uri: 'http://localhost:4000/graphql',
+  batchInterval: 10
 });
 
 export const client = new ApolloClient({
