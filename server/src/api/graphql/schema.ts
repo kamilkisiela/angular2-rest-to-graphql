@@ -23,8 +23,8 @@ const rootSchema = [`
 
 const rootResolvers = {
   Query: {
-    directors() {
-      return [];
+    directors(root, args, context) {
+      return context.db.getDirectors();
     }
   }
 }
