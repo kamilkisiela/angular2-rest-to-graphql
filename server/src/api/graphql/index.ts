@@ -1,8 +1,10 @@
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 
+import schema from './schema';
+
 export default function (app) {
   app.use('/graphql', graphqlExpress({
-    // options
+    schema
   }));
 
   app.use('/graphiql', graphiqlExpress({
