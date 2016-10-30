@@ -3,6 +3,8 @@ import { Angular2Apollo, ApolloQueryObservable } from 'angular2-apollo';
 
 import gql from 'graphql-tag';
 
+import 'rxjs/add/operator/do';
+
 const directorsQuery = gql`
   query getDirectors {
     directors {
@@ -30,6 +32,9 @@ export class DirectorsListContainerComponent implements OnInit {
   ngOnInit() {
     this.directors = this.apollo.watchQuery({
       query: directorsQuery
+    })
+    .do(result => {
+      console.log('result', result);
     });
   }
 }
