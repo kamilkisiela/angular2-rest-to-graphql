@@ -1,3 +1,10 @@
-import { ApolloClient } from 'apollo-client';
+import { ApolloClient, createNetworkInterface } from 'apollo-client';
 
-export const client = new ApolloClient();
+const networkInterface = createNetworkInterface({
+  uri: 'http://localhost:4000/graphql'
+});
+
+export const client = new ApolloClient({
+  networkInterface
+});
+
