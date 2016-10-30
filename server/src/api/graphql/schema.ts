@@ -9,4 +9,12 @@ const rootSchema = [`
     image: string!
   }
 
+  type Query {
+    directors: [Director]
+  }
+
+  schema {
+    query: Query
+  }
+
 `];
