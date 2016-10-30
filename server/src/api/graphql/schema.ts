@@ -9,6 +9,7 @@ const rootSchema = [`
     birthday: Float!
     bio: String
     image: String!
+    movies: [Movie]
   }
 
   type Movie {
@@ -46,6 +47,13 @@ const rootResolvers = {
   Movie: {
     director(root, args, context) {
       return context.db.getDirector(root.director);
+    }
+  },
+
+
+  Director: {
+    movies(root, args, context) {
+      return context.db.getMoviesByDirector(root.id);
     }
   }
 }
