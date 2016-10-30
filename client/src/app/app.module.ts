@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { ApolloModule } from 'angular2-apollo';
 
+import { client } from './apollo';
 import { AppComponent } from './app.component';
 // Director
 import { DirectorComponent } from './director/director.component';
@@ -17,7 +19,8 @@ import { Data } from './shared/data.service';
 @NgModule({
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    ApolloModule.withClient(client)
   ],
   declarations: [
     AppComponent,
